@@ -1,66 +1,232 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<p align="center"><a href="https://www.youtube.com/watch?v=PTE6GHgfh1Q" target="_blank"><img src="https://i9.ytimg.com/vi/PTE6GHgfh1Q/sddefault.jpg?v=668bf9a6&sqp=CMD0r7QG&rs=AOn4CLC8spyTL1dUYKRjF9JSHfiamrAddg" width="400" alt="Laravel Logo"></a></p>
 
 ## How to Use Multiple Languages in Laravel
+Welcome to the repository for the tutorial video on how to use multiple languages in Laravel! This README provides a summary of the video content and additional resources.
+## Video Link
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Watch the full tutorial on YouTube: [How to Use Multiple Languages in Laravel](https://www.youtube.com/watch?v=PTE6GHgfh1Q)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Topics Covered
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Introduction to Laravel Localization and Internationalization (i18n)
+- Setting up Language Files and Directories
+- Creating Language Keys and Translations
+- Switching between Languages Dynamically
+- Best Practices for Multi-language Support in Laravel
 
-## Learning Laravel
+## Instructions
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- 1.Download freash laravel project
+- 2.create language folder and assign text inside resoures folder
+- 3.create route, controller and assign function
+- 4.create language select option and function
+- 5.Create middleware
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Step-by-Step Instructions
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Download Fresh Laravel Project
 
-## Laravel Sponsors
+```bash
+composer create-project --prefer-dist laravel/laravel multi-language-laravel
+cd multi-language-laravel
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 2. Create Language Folder and Assign Text Inside Resources Folder
+Create a lang folder inside the resources directory. Inside resources/lang, create subdirectories for each language you want to support (e.g., en for English, bn for Bangla, fr for French).
 
-### Premium Partners
+Open content.php file from each directory and paste bellow code.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+resources/lang/bn/conent.php 
+```
+<?php
 
-## Contributing
+return [
+    'heading' => 'আমরা দেখব কিভাবে মোল্লা মেহেদীর সাথে লারাভেলের একাধিক ভাষা ব্যবহার করা যায়'
+];
+```
+resources/lang/en/conent.php 
+```
+<?php
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+return [
+    'heading' => 'We will see how to use multiple languages ​​in Laravel with Molla Mehedi'
+];
+```
+resources/lang/fr/conent.php 
+```
+<?php
 
-## Code of Conduct
+return [
+    'heading' => 'Nous verrons comment utiliser plusieurs langues dans Laravel avec Molla Mehedi',
+];
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 3. Create Route, Controller, and Assign Function
+Generate a new controller and define functions for language handling:
+```
+php artisan make:controller LanguageController
+```
+Define routes in web.php:
+```
+<?php
 
-## Security Vulnerabilities
+use App\Http\Controllers\LangController;
+use Illuminate\Support\Facades\Route;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
 
-## License
+Route::get('/', function () {
+    return view('welcome');
+});
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Route::get('lang/change', [LangController::class, 'lang_change'])->name('lang.change');
+
+
+```
+ Create Language Select Option and Function
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+
+class LangController extends Controller
+{
+    public function lang_change(Request $request)
+    {
+        App::setLocale($request->lang);
+        session()->put('lang_code',$request->lang);
+        return redirect()->back();
+    }
+}
+```
+
+## 4 .create language select option and function 
+ put the html code  inside views folder  welcome.blade
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Laravel Multiple Language With Molla Mehedi</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container text-center">
+      
+        <div class="row">
+            <div class="col-md-8 m-auto mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <img src="{{ asset('logo.jpg') }}" alt="">
+                        <h2>Laravel Multiple Language With Molla Mehedi</h2>
+                    </div>
+               
+                <div class="card-body">
+                    <strong>Select Language: </strong>
+                    <select class="form-control lang-change">
+                        <option value="en" {{ session()->get('lang_code')=='en' ? 'selected' : ''}}>English</option>
+                        <option value="fr" {{ session()->get('lang_code')=='fr' ? 'selected' : ''}}>French</option>
+                        <option value="bn" {{ session()->get('lang_code')=='bn' ? 'selected' : ''}}>Bengali</option>
+                    </select>
+                <h4 class="mt-5">{{ __('content.heading') }}</h4>
+                </div>
+                <div class="card-footer">
+                    <h4 class="mt-5">Support</h4>
+                    <strong>Email : </strong> <a href="mailto:mollameehedi@gmail.com">mollameehedi@gmail.com</a>
+                    <br/>
+                    <strong>Website : </strong><a href=" mlmehedi.com"> mlmehedi.com</a>
+                </div>
+            </div>
+            </div>
+        </div>
+     
+    </div>
+</body>
+  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+  var url = "{{ route('lang.change') }}";
+
+    $('.lang-change').change(function(){
+     let lang_code = $(this).val();
+      window.location.href = url + "?lang="+ lang_code;
+    });
+
+</script>
+</html>
+```
+
+## 5.Create middleware
+Create a middleware to handle language switching globally:
+```
+php artisan make:middleware LangMiddleware
+```
+Assign Condition
+```
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Symfony\Component\HttpFoundation\Response;
+
+class LangMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+    public function handle(Request $request, Closure $next): Response
+    {
+        if(session()->has('lang_code')){
+            App::setLocale(session()->get('lang_code'));
+        }
+        return $next($request);
+    }
+}
+```
+# Register the middleware in app/Http/Kernel.php:
+
+```
+protected $middlewareGroups = [
+    'web' => [
+        // Other middleware...
+        \App\Http\Middleware\LangMiddleware::class,
+    ],
+];
+```
+
+Ok Now run artisan server using the bellow command and test your app.
+```
+php artisan serve
+ 
+```
+Paste this URL in the browser http://127.0.0.1:8000
+
+ 
+
+ 
+
+Hope this will help you. Thanks
+
+
+
+
