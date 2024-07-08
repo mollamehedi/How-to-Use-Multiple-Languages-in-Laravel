@@ -1,4 +1,4 @@
-<p align="center"><a href="https://www.youtube.com/watch?v=PTE6GHgfh1Q" target="_blank"><img src="https://i9.ytimg.com/vi/PTE6GHgfh1Q/sddefault.jpg?v=668bf9a6&sqp=CMD0r7QG&rs=AOn4CLC8spyTL1dUYKRjF9JSHfiamrAddg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=PTE6GHgfh1Q" target="_blank"><img src="https://raw.githubusercontent.com/mollamehedi/How-to-Use-Multiple-Languages-in-Laravel/main/public/thumbaill.jpg" width="100%" alt="Laravel Logo"></a></p>
 
 ## How to Use Multiple Languages in Laravel
 Welcome to the repository for the tutorial video on how to use multiple languages in Laravel! This README provides a summary of the video content and additional resources.
